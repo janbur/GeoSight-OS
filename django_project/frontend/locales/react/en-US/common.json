@@ -224,6 +224,10 @@
   "category": "Category",
   "dashboardPage": {
     "adminPanelButton": "Admin panel",
+    "compareLayer": {
+      "turnOff": "Turn off compare Layers",
+      "turnOn": "Turn on compare Layers"
+    },
     "contextLayerErrorDelete": "It seems this layer already being deleted",
     "contextLayerErrorPermission": "You don't have permission to access this resource",
     "contextLayerSearch": "Search Context Layers",
@@ -238,10 +242,19 @@
     "loadingDashboardData": "Loading Dashboard Data...",
     "projectOverview": "Project Overview",
     "projectOverviewClose": "Close",
+    "projectOverviewNoInfo": "*There is no information for this project.*",
     "projectOverviewNoShow": "Do not show this again!",
     "relatedTableNotConfigured": "Related table does not configured properly",
     "searchGeographyEntity": "Search Geography Entity",
-    "searchGeographyEntityLoading": "Loading...."
+    "searchGeographyEntityLoading": "Loading....",
+    "toolbars": {
+      "globalDateSelector": {
+        "showGlobalTimeConfiguration": "Show global time configuration"
+      },
+      "togglePanel": {
+        "title": "Toggle Panel"
+      }
+    }
   },
   "featured": "Featured",
   "featured projects": "Featured Projects",
@@ -259,5 +272,11 @@
     "djangoAdmin": "Django admin"
   },
   "seeMapboxDocumentationForMoreDetail": "See mapbox documentation for more detail.",
+  "components": {
+    "compositeIndexLayer": {
+      "activate": "Activate composite index layer",
+      "deactivate": "Deactivate composite index layer"
+    }
+  },
   "thereAreSomeInformationToControlTheLegend": "There are some information to control the Legend."
 }

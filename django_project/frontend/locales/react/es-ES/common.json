@@ -224,6 +224,10 @@
   "category": "Categoría",
   "dashboardPage": {
     "adminPanelButton": "Panel de administración",
+    "compareLayer": {
+      "turnOff": "Desactivar capas de comparación",
+      "turnOn": "Activar capas de comparación"
+    },
     "contextLayerErrorDelete": "Parece que esta capa ya fue eliminada",
     "contextLayerErrorPermission": "No tienes permiso para acceder a este recurso",
     "contextLayerSearch": "Buscar capas de contexto",
@@ -238,10 +242,19 @@
     "loadingDashboardData": "Cargando datos del panel...",
     "projectOverview": "Resumen del proyecto",
     "projectOverviewClose": "Cerrar",
+    "projectOverviewNoInfo": "*No hay información para este proyecto.*",
     "projectOverviewNoShow": "¡No mostrar esto de nuevo!",
     "relatedTableNotConfigured": "La tabla relacionada no está configurada correctamente",
     "searchGeographyEntity": "Buscar entidad geográfica",
-    "searchGeographyEntityLoading": "Cargando..."
+    "searchGeographyEntityLoading": "Cargando...",
+    "toolbars": {
+      "globalDateSelector": {
+        "showGlobalTimeConfiguration": "Mostrar configuración de tiempo global"
+      },
+      "togglePanel": {
+        "title": "Alternar panel"
+      }
+    }
   },
   "featured": "Destacado",
   "featured projects": "Proyectos Destacados",
@@ -260,5 +273,11 @@
   },
   "SDMX layer" : "Capa SDMX",
   "seeMapboxDocumentationForMoreDetail": "Consulta la documentación de Mapbox para más detalles.",
+  "components": {
+    "compositeIndexLayer": {
+      "activate": "Activar capa de índice compuesto",
+      "deactivate": "Desactivar capa de índice compuesto"
+    }
+  },
   "thereAreSomeInformationToControlTheLegend": "Hay información para controlar la leyenda."
 }
