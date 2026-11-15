@@ -77,9 +77,9 @@ export function ModalHeader({ children, onClosed }) {
       <div className="modal--header--title">{children}</div>
       <div
         className="MuiButtonLike modal--header--close"
-        onClick={() => {
+        onClick={(e) => {
           if (onClosed) {
-            onClosed();
+            onClosed(e);
           }
         }}
       >

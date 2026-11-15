@@ -69,7 +69,7 @@ export default function MapModeToolbars({ map }: Props) {
       <div
         style={{
           borderLeft: "1px solid #E6E8E8",
-          height: "30px",
+          height: "34px",
           margin: "0 0.5rem",
         }}
       />

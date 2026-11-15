@@ -40,7 +40,7 @@ export default function ReferenceLayerSelectorPlugin() {
         <PluginChild
           title={"Reference Layer selection"}
           className={"ReferenceLayerSelectorWrapper no-select"}
-          active={true}
+          active={false}
           disabled={false}
         >
           <ReferenceLayerSelector />

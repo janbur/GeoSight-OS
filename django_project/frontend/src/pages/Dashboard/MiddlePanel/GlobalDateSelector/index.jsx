@@ -24,11 +24,11 @@ import Switch from "@mui/material/Switch";
 import CircularProgress from "@mui/material/CircularProgress";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import KeyboardDoubleArrowDownIcon
-  from "@mui/icons-material/KeyboardDoubleArrowDown";
-import KeyboardDoubleArrowUpIcon
-  from "@mui/icons-material/KeyboardDoubleArrowUp";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  TimeIcon,
+} from "../../../../components/Icons";
 
 import { axiosPostWithSession } from "../../../../Requests";
 import { Actions } from "../../../../store/dashboard";
@@ -613,15 +613,15 @@ export default function GlobalDateSelector() {
             }}
           >
             {globalDateSelectorOpened ? (
-              <KeyboardDoubleArrowDownIcon />
+              <ChevronDownIcon />
             ) : (
-              <KeyboardDoubleArrowUpIcon />
+              <ChevronUpIcon />
             )}
-            <AccessTimeIcon />
+            <TimeIcon />
             {globalDateSelectorOpened ? (
-              <KeyboardDoubleArrowDownIcon />
+              <ChevronDownIcon />
             ) : (
-              <KeyboardDoubleArrowUpIcon />
+              <ChevronUpIcon />
             )}
           </ThemeButton>
         </PlayControl>

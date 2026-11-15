@@ -21,25 +21,17 @@ import { pageNames } from "../../index";
 import NavBar from "../../../../components/Navbar";
 import User from "../../../../components/Navbar/User";
 import {
-  ContactActiveIcon,
   ContactIcon,
-  DataBrowserActiveIcon,
   DataBrowserIcon,
-  DataManagementActiveIcon,
   DataManagementIcon,
-  GlobeIcon,
+  HeaderGlobeIcon,
   GridIcon,
   HelpIcon,
-  LayerActiveIcon,
   LayerIcon,
   ListIcon,
-  MapActiveIcon,
   MapIcon,
-  ProjectActiveIcon,
   ProjectIcon,
-  StyleActiveIcon,
   StyleIcon,
-  TableActiveIcon,
   TableIcon,
 } from "../../../../components/Icons";
 import { HelpCenter } from "../../../../components/HelpCenter";
@@ -109,11 +101,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageName === pageNames.Dashboard ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.Dashboard ? (
-                    <ProjectActiveIcon />
-                  ) : (
-                    <ProjectIcon />
-                  )}
+                  <ProjectIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.project")}
                   </span>
@@ -147,11 +135,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageName === pageNames.ContextLayer ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.ContextLayer ? (
-                    <LayerActiveIcon />
-                  ) : (
-                    <LayerIcon />
-                  )}
+                  <LayerIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.contextLayers")}
                   </span>
@@ -168,11 +152,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageName === pageNames.Basemaps ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.Basemaps ? (
-                    <MapActiveIcon />
-                  ) : (
-                    <MapIcon />
-                  )}
+                  <MapIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.basemaps")}
                   </span>
@@ -189,11 +169,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageName === pageNames.Styles ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.Styles ? (
-                    <StyleActiveIcon />
-                  ) : (
-                    <StyleIcon />
-                  )}
+                  <StyleIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.styles")}
                   </span>
@@ -220,13 +196,7 @@ export default function SideNavigation({ pageName, minified }) {
                         : "")
                     }
                   >
-                    {[pageNames.Importer, pageNames.DataManagement].includes(
-                      pageName,
-                    ) ? (
-                      <DataManagementActiveIcon />
-                    ) : (
-                      <DataManagementIcon />
-                    )}
+                    <DataManagementIcon />
                     <span className="SideNavigation-Row-Name">
                       {t("admin.dataManagement")}
                     </span>
@@ -244,11 +214,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageName === pageNames.Dataset ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.Dataset ? (
-                    <DataBrowserActiveIcon />
-                  ) : (
-                    <DataBrowserIcon />
-                  )}
+                  <DataBrowserIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.dataBrowser")}
                   </span>
@@ -270,14 +236,7 @@ export default function SideNavigation({ pageName, minified }) {
                       : "")
                   }
                 >
-                  {[
-                    pageNames.RelatedTables,
-                    pageNames.RelatedTablesData,
-                  ].includes(pageName) ? (
-                    <TableActiveIcon />
-                  ) : (
-                    <TableIcon />
-                  )}
+                  <TableIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.relatedTables")}
                   </span>
@@ -302,11 +261,7 @@ export default function SideNavigation({ pageName, minified }) {
                         : "")
                     }
                   >
-                    {[pageNames.ReferenceLayerView].includes(pageName) ? (
-                      <LayerActiveIcon />
-                    ) : (
-                      <LayerIcon />
-                    )}
+                    <LayerIcon />
                     <span className="SideNavigation-Row-Name">
                       {t("admin.referenceDatasetsLower")}
                     </span>
@@ -325,11 +280,7 @@ export default function SideNavigation({ pageName, minified }) {
                         : "")
                     }
                   >
-                    {[pageNames.referenceDatesetImporter].includes(pageName) ? (
-                      <LayerActiveIcon />
-                    ) : (
-                      <LayerIcon />
-                    )}
+                    <LayerIcon />
                     <span className="SideNavigation-Row-Name">
                       {t("admin.importers")}
                     </span>
@@ -354,11 +305,7 @@ export default function SideNavigation({ pageName, minified }) {
                         (pageName === pageNames.UsersAndGroups ? "active" : "")
                       }
                     >
-                      {pageName === pageNames.UsersAndGroups ? (
-                        <ContactActiveIcon />
-                      ) : (
-                        <ContactIcon />
-                      )}
+                      <ContactIcon />
                       <span className="SideNavigation-Row-Name">
                         {t("admin.usersAndGroups")}
                       </span>
@@ -406,11 +353,7 @@ export default function SideNavigation({ pageName, minified }) {
                     (pageNames.UserProfile === pageName ? "active" : "")
                   }
                 >
-                  {pageName === pageNames.UserProfile ? (
-                    <ContactActiveIcon />
-                  ) : (
-                    <ContactIcon />
-                  )}
+                  <ContactIcon />
                   <span className="SideNavigation-Row-Name">
                     {t("admin.profile")}
                   </span>
@@ -436,7 +379,7 @@ export default function SideNavigation({ pageName, minified }) {
         <SidaNavigationButton minified={minified} title={t("admin.language")}>
           <LanguageSelector>
             <a className="SideNavigation-Row language-selector">
-              <GlobeIcon />
+              <HeaderGlobeIcon />
               <span className="SideNavigation-Row-Name">
                 {t("native.name")}
               </span>

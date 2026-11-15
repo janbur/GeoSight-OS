@@ -114,15 +114,11 @@
     }
 
     &.active {
-      background-color: var(--base-alpha-color);
+      background-color: color-mix(in srgb, var(--primary-color) 22%, transparent);
       color: var(--primary-color);
 
       &:hover {
         opacity: 1;
-      }
-
-      path {
-        fill: var(--primary-color) !important;
       }
 
       svg {

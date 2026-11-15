@@ -35,7 +35,7 @@ import Modal, {
 } from "../../../../components/Modal";
 import { Plugin, PluginChild } from "../../MapLibre/utils/Plugin";
 import { CloseButton } from "../../../../components/Elements/Button";
-import { InfoFillIcon } from "../../../../components/Icons";
+import { InfoIcon } from "../../../../components/Icons";
 
 import './style.scss';
 
@@ -75,9 +75,9 @@ export default function ProjectOverview() {
 
   return (
     <Plugin className="ProjectOverview-Button">
-      <div className={open ? "Active" : "Inactive"}>
-        <PluginChild title={"Project Overview"}>
-          <InfoFillIcon onClick={(_) => setOpen(true)} />
+      <div>
+        <PluginChild title={t('dashboardPage.projectOverview')} active={open} onClick={() => setOpen(true)}>
+          <InfoIcon />
           <Modal
             className="ProjectOverview"
             open={open}
@@ -86,7 +86,8 @@ export default function ProjectOverview() {
             }}
           >
             <ModalHeader
-              onClosed={() => {
+              onClosed={(e) => {
+                if (e) e.stopPropagation();
                 setOpen(false);
               }}
             >
@@ -97,7 +98,7 @@ export default function ProjectOverview() {
                 <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                   {overview
                     ? overview
-                    : "*There is no information for this project.*"}
+                    : t("dashboardPage.projectOverviewNoInfo")}
                 </Markdown>
               </div>
             </ModalContent>
