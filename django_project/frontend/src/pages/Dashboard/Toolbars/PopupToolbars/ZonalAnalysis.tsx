@@ -71,7 +71,6 @@ export const ZonalAnalysisComponent = forwardRef(
     return (
       <Plugin className="PopupToolbarIcon ZonalAnalysisIcon">
         <div
-          className="Active"
           data-tool={Variables.DASHBOARD.TOOL.ZONAL_ANALYSIS}
         >
           <PluginChild
