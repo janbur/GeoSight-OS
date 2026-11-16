@@ -296,9 +296,10 @@
       &.ReferenceLayerToolbar {
         .ToolbarChild > a {
           width: fit-content !important;
-          display: block !important;
+          display: flex !important;
+          align-items: center !important;
           padding: 0 !important;
-          line-height: 34px;
+          background-color: transparent !important;
         }
       }
 
@@ -640,5 +641,13 @@ $nav-disabled-color: '%23CCCCCC';
 .DashboardMap .Toolbar .LeftButton .ToolbarChild > a,
 .DashboardMap .Toolbar .RightButton .ToolbarChild > a {
   color: var(--primary-color) !important;
+}
+/* ReferenceLayerToolbar: dropdown needs fit-content width and flex centering */
+.DashboardMap .Toolbar .ReferenceLayerToolbar .ToolbarChild > a {
+  width: fit-content !important;
+  height: 34px !important;
+  display: flex !important;
+  align-items: center !important;
+  background-color: transparent !important;
 }
 /* end v1 icon state model ------------------------------------------------ */
