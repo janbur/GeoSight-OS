@@ -181,6 +181,10 @@ const SDMXLayerConfig = forwardRef<SDMXLayerConfigRef, SDMXLayerConfigProps>(
               updated = true;
             }
             detectedDateTimeFormat.current = newValue;
+          } else if (newValue && !data.config.dateTimeFormat) {
+            // Re-apply when dateTimeFormat was lost after a config change
+            data.config.dateTimeFormat = newValue;
+            updated = true;
           }
         }
         if (!data?.config?.aggregationType) {
