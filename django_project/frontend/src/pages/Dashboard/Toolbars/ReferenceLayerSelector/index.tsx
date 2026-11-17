@@ -15,7 +15,6 @@
 
 import React from "react";
 import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 import { isDashboardToolEnabled } from "../../../../selectors/dashboard";
 import { Variables } from "../../../../utils/Variables";
 import { Plugin, PluginChild } from "../../MapLibre/utils/Plugin";
@@ -25,7 +24,6 @@ import ReferenceLayerSelector from "../ReferenceLayerSelector/Selector";
  * Reference layer level selection
  */
 export default function ReferenceLayerSelectorPlugin() {
-  const { t } = useTranslation();
   const referenceLayer = useSelector(
     // @ts-ignore
     (state) => state.dashboard.data?.referenceLayer,
@@ -40,7 +38,7 @@ export default function ReferenceLayerSelectorPlugin() {
     >
       <div data-tool={Variables.DASHBOARD.TOOL.LEVEL_SELECTOR}>
         <PluginChild
-          title={t("dashboardPage.toolbars.referenceLayers.title")}
+          title={"Reference Layer selection"}
           className={"ReferenceLayerSelectorWrapper no-select"}
           active={false}
           disabled={false}
