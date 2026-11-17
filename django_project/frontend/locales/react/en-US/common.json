@@ -251,8 +251,14 @@
       "globalDateSelector": {
         "showGlobalTimeConfiguration": "Show global time configuration"
       },
+      "referenceLayers": {
+        "title": "Reference Layer selection"
+      },
       "togglePanel": {
         "title": "Toggle Panel"
+      },
+      "zonalAnalysis": {
+        "title": "Zonal Analysis"
       }
     }
   },

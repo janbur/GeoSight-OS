@@ -56,7 +56,7 @@ test.describe('Zonal analysis', () => {
     await page.getByRole('button', { name: 'Close' }).click();
 
     // Test composite and compare toggle each other
-    await page.getByTitle('Zonal Analysis').click();
+    await page.locator('[data-tool="Zonal analysis"] a').click();
     await page.getByRole('region', { name: 'Map' }).click({
       position: {
         x: 312,

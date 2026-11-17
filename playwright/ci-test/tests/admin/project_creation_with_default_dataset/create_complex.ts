@@ -328,7 +328,7 @@ test.describe('Create complex project', () => {
     await expect(page.getByTitle('Start Measurement')).toBeVisible();
     await page.getByTitle('Start Measurement').click();
     await expect(page.getByText('Measure distances and areas')).toBeVisible();
-    await page.getByTitle('Zonal Analysis').click();
+    await page.locator('[data-tool="Zonal analysis"] a').click();
     await expect(page.getByText('Draw on map and finish by')).toBeVisible();
     await page.getByText('Click to select').click();
     await expect(page.getByText('Click a feature on the map')).toBeVisible();

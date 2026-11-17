@@ -694,7 +694,7 @@ export const assert_2 = async (page, url, countryLastLog, sumIndicatorAByCountry
   await expect(page.getByTitle('Start Measurement')).toBeVisible();
   await expect(page.getByTitle('Turn on compare Layers')).toBeVisible();
   await expect(page.getByTitle('3D layer')).toBeVisible();
-  await expect(page.getByTitle('Zonal Analysis')).toBeHidden();
+  await expect(page.locator('[data-tool="Zonal analysis"]')).toBeHidden();
   await page.getByTitle('Start Measurement').click();
   await expect(page.getByText('Measure distances and areas')).toBeVisible();
   await page.getByTitle('Start Measurement').click();
