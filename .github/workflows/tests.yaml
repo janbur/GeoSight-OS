@@ -114,40 +114,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # DIAGNOSTIC (fork only, never upstream): "Close" timeout investigation
         test_suite: [
-          { id: "backend-tests", mode: "backend", plugins: "tenants,reference_dataset,cloud_native_gis,data_restorer" },
-          { id: "e2e-functions", mode: "e2e", path: "tests/admin/functions/", workers: 1, script: "make load-test-data" },
-          { id: "e2e-project-creation", mode: "e2e", path: "tests/admin/project_creation/", workers: 2, script: "make load-test-data" },
-          { id: "e2e-project-view-ucode", mode: "e2e", path: "tests/admin/project_view_default/project_view_ucode.ts", workers: 1, script: "make load-test-data" },
-          { id: "e2e-project-view-ucode-2", mode: "e2e", path: "tests/admin/project_view_default/project_view_ucode_2.ts", workers: 1, script: "make load-test-data" },
-          { id: "e2e-project-view-concept-uuid", mode: "e2e", path: "tests/admin/project_view_default/project_view_concept_uuid.ts", workers: 1, script: "make load-test-data" },
-          { id: "e2e-project-view-concept-uuid-2", mode: "e2e", path: "tests/admin/project_view_default/project_view_concept_uuid_2.ts", workers: 1, script: "make load-test-data" },
-          { id: "e2e-project-view", mode: "e2e", path: "tests/admin/project_view/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-project-features", mode: "e2e", path: "tests/admin/project_features/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-project-features-2", mode: "e2e", path: "tests/admin/project_features_2/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-project-features-3", mode: "e2e", path: "tests/admin/project_features_3/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-project-features-4", mode: "e2e", path: "tests/admin/project_features_4/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-admin-create", mode: "e2e", path: "tests/admin/admin_create/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-admin-user", mode: "e2e", path: "tests/admin/admin_user/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-admin-list", mode: "e2e", path: "tests/admin/admin_list/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-admin-edit", mode: "e2e", path: "tests/admin/admin_edit/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-importer", mode: "e2e", path: "tests/admin/importer/", workers: 3, script: "make load-test-data" },
-          { id: "e2e-project-bookmark-embed", mode: "e2e", path: "tests/admin/project_bookmark_embed/", workers: 3, script: "make load-test-data" },
-          # Filter
-          { id: "e2e-admin-list-filter", mode: "e2e", path: "tests/admin/admin_filter/", workers: 3, script: "make load-test-data-for-filter" },
-          # Contributor
-          { id: "e2e-contributor", mode: "e2e", path: "tests/contributor/", workers: 3, script: "make load-test-data" },
-          # Creator
-          { id: "e2e-creator", mode: "e2e", path: "tests/creator/", workers: 3, script: "make load-test-data" },
-          # Mobile
-          { id: "e2e-project-view-mobile", mode: "e2e", path: "tests/admin/project_view_mobile/", workers: 3, script: "make load-test-data" },
-          # With default dataset
-          { id: "e2e-project-creation-with-default-dataset", mode: "e2e", path: "tests/admin/project_creation_with_default_dataset/", workers: 3, script: "make load-test-data-default-dataset" },
-          # Data restorer test
-          { id: "e2e-data-restorer-plugin-disabled", mode: "e2e", path: "tests/admin/data_restorer/disabled.ts", workers: 1, plugins: "cloud_native_gis,reference_dataset" },
-
-          { id: "e2e-data-restorer-plugin-enable-country-data", mode: "e2e", path: "tests/admin/data_restorer/country_data.ts", workers: 1, plugins: "cloud_native_gis,reference_dataset,data_restorer", initial_default_data: "true" },
-          { id: "e2e-data-restorer-plugin-enable-with-data", mode: "e2e", path: "tests/admin/data_restorer/with_data.ts", workers: 1, script: "make load-test-data", plugins: "cloud_native_gis,reference_dataset,data_restorer" },
+          { id: "e2e-admin-edit-a", mode: "e2e", path: "tests/admin/admin_edit/", workers: 3, script: "make load-test-data" },
+          { id: "e2e-project-bookmark-embed-a", mode: "e2e", path: "tests/admin/project_bookmark_embed/", workers: 3, script: "make load-test-data" },
+          { id: "e2e-admin-edit-b", mode: "e2e", path: "tests/admin/admin_edit/", workers: 3, script: "make load-test-data" },
+          { id: "e2e-project-bookmark-embed-b", mode: "e2e", path: "tests/admin/project_bookmark_embed/", workers: 3, script: "make load-test-data" },
+          { id: "e2e-admin-edit-c", mode: "e2e", path: "tests/admin/admin_edit/", workers: 3, script: "make load-test-data" },
+          { id: "e2e-project-bookmark-embed-c", mode: "e2e", path: "tests/admin/project_bookmark_embed/", workers: 3, script: "make load-test-data" },
         ]
     env:
       APP_IMAGE: unicef/geosight
@@ -202,7 +176,7 @@ jobs:
         if: ${{ matrix.test_suite.mode == 'e2e' }}
         run: |
           make dev-initialize
-          make dev-runserver
+          docker exec -d geosight_dev bash -c "python manage.py runserver 0.0.0.0:2000 > /tmp/runserver.log 2>&1"
           ${{ matrix.test_suite.script }}
           make sleep
 
@@ -225,8 +199,18 @@ jobs:
           npx playwright install --with-deps chromium
           npx playwright test ${{ matrix.test_suite.path }} --workers ${{ matrix.test_suite.workers }}
 
+      - name: Collect server logs
+        if: always()
+        run: |
+          mkdir -p playwright/ci-test/playwright-results/server-logs
+          docker cp geosight_dev:/tmp/runserver.log playwright/ci-test/playwright-results/server-logs/runserver.log || true
+          for c in geosight_dev geosight_worker geosight_db; do
+            docker logs $c > playwright/ci-test/playwright-results/server-logs/$c.log 2>&1 || true
+          done
+          grep -n -E '" 5[0-9][0-9] |Traceback|Internal Server Error' playwright/ci-test/playwright-results/server-logs/runserver.log | head -50 || true
+
       - name: Upload Playwright Screenshots
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v4
 
         with:
