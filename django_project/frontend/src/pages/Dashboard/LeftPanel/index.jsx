@@ -32,8 +32,8 @@ import IndicatorLayersAccordion from "./IndicatorLayers";
 import RelatedTables from "./RelatedTable";
 import FiltersAccordion from "./Filters";
 import {
+  FilterIcon,
   LayerIcon,
-  TuneIcon,
   VisibilityIcon,
   VisibilityOffIcon,
 } from "../../../components/Icons";
@@ -60,13 +60,16 @@ export function ContextLayerVisibility() {
     e.stopPropagation();
     dispatch(Actions.Map.showHideContextLayer(!contextLayersShow));
   };
+  const props = {
+    className: "MuiTab-iconWrapper LayerVisibilityToggle",
+    "data-testid": "context-layers-visibility",
+    "data-visible": contextLayersShow ? "true" : "false",
+    onClick: handleVisibility,
+  };
   return contextLayersShow ? (
-    <VisibilityIcon className="MuiTab-iconWrapper" onClick={handleVisibility} />
+    <VisibilityIcon {...props} />
   ) : (
-    <VisibilityOffIcon
-      className="MuiTab-iconWrapper"
-      onClick={handleVisibility}
-    />
+    <VisibilityOffIcon {...props} />
   );
 }
 
@@ -82,13 +85,16 @@ export function IndicatorsVisibility() {
     dispatch(Actions.Map.showHideIndicator(!indicatorShow));
   };
 
+  const props = {
+    className: "MuiTab-iconWrapper LayerVisibilityToggle",
+    "data-testid": "indicators-visibility",
+    "data-visible": indicatorShow ? "true" : "false",
+    onClick: handleVisibility,
+  };
   return indicatorShow ? (
-    <VisibilityIcon className="MuiTab-iconWrapper" onClick={handleVisibility} />
+    <VisibilityIcon {...props} />
   ) : (
-    <VisibilityOffIcon
-      className="MuiTab-iconWrapper"
-      onClick={handleVisibility}
-    />
+    <VisibilityOffIcon {...props} />
   );
 }
 
@@ -145,7 +151,7 @@ export default function LeftPanel({ leftExpanded }) {
                 <Tab
                   className="filters-tab"
                   label={t("dashboardPage.filters")}
-                  icon=<TuneIcon />
+                  icon=<FilterIcon />
                   iconPosition="start"
                   {...tabProps("Filters")}
                 />
