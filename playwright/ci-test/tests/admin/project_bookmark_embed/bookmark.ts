@@ -80,6 +80,10 @@ test.describe('Bookmark', () => {
     await ctx.checkMapStyle(page, 0, TEXT.INDICATOR_LAYERS.sampleIndicatorA);
 
     // Turn on compare mode
+    // DIAG (fork only): slow down indicator data so the style arrives late
+    const slowData = (url: URL) => /\/api\/v1\/indicators\/\d+\/data\/$/.test(url.pathname) && url.searchParams.has('date__lte');
+    const slowDataHandler = async route => { await delay(1500); await route.continue(); };
+    await page.route(slowData, slowDataHandler);
     await page.getByTitle(TEXT.TOOLS_TOGGLER.compareLayer.Off).click();
     await page.getByLabel(TEXT.INDICATOR_LAYERS.sampleIndicatorB).click();
     // The map logs its layers and paint when it applies them; indicator B's
@@ -90,6 +94,7 @@ test.describe('Bookmark', () => {
     await expect.poll(() => ctx.lastLayerPaintFill["map-0"]).toBe(indicatorBFill + defaultFill);
     await expect.poll(() => ctx.lastLayerPaintLine["map-0"]).toBe(indicatorAFill + defaultLine);
 
+    await page.unroute(slowData, slowDataHandler);
     await createBookmark(page, bookmarkName)
 
     await expect(page.getByTitle(TEXT.TOOLS_TOGGLER.compareLayer.On)).toBeVisible();
