@@ -88,11 +88,11 @@ test.describe('Bookmark', () => {
     await page.getByLabel(TEXT.INDICATOR_LAYERS.sampleIndicatorB).click();
     // The map logs its layers and paint when it applies them; indicator B's
     // style comes only after its data has loaded, so wait for those logs.
-    await expect.poll(() => ctx.lastLayers["map-0"]).toContain("reference-layer-fill-map-0-0,reference-layer-outline-map-0-0");
+    expect(ctx.lastLayers["map-0"]).toContain("reference-layer-fill-map-0-0,reference-layer-outline-map-0-0");
     await expect(page.locator('.MapLegendSectionTitle .ReactSelect__single-value').nth(0)).toHaveText(TEXT.INDICATOR_LAYERS.sampleIndicatorA + ' (Outline)')
     await expect(page.locator('.MapLegendSectionTitle .ReactSelect__single-value').nth(1)).toHaveText(TEXT.INDICATOR_LAYERS.sampleIndicatorB + ' (Inner)')
-    await expect.poll(() => ctx.lastLayerPaintFill["map-0"]).toBe(indicatorBFill + defaultFill);
-    await expect.poll(() => ctx.lastLayerPaintLine["map-0"]).toBe(indicatorAFill + defaultLine);
+    expect(ctx.lastLayerPaintFill["map-0"]).toBe(indicatorBFill + defaultFill);
+    expect(ctx.lastLayerPaintLine["map-0"]).toBe(indicatorAFill + defaultLine);
 
     await page.unroute(slowData, slowDataHandler);
     await createBookmark(page, bookmarkName)
